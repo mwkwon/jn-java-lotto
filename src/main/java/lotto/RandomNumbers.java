@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -11,16 +12,20 @@ public class RandomNumbers {
     private final int MAX_NUM = 45;
     private final int ZERO = 0;
     private final int LOTTO_NUMBER_COUNT = 6;
-    private final List<Integer> randomNumbers;
+    private final List<LottoNumber> randomNumbers;
 
     public RandomNumbers() {
         int[] range = IntStream.rangeClosed(MIN_NUM, MAX_NUM).toArray();
-        randomNumbers = Arrays.stream(range).boxed().collect(Collectors.toList());
+        randomNumbers = Arrays.stream(range).boxed().map(LottoNumber::new).collect(Collectors.toList());
     }
 
-    public List<Integer> lottoNumbers() {
+    public RandomNumbers(RandomNumbers randomNumbers) {
+        this.randomNumbers = new ArrayList<>(randomNumbers.randomNumbers);
+    }
+
+    public List<LottoNumber> lottoNumbers() {
         Collections.shuffle(randomNumbers);
-        List<Integer> lottoNumbers = randomNumbers.subList(ZERO, LOTTO_NUMBER_COUNT);
+        List<LottoNumber> lottoNumbers = randomNumbers.subList(ZERO, LOTTO_NUMBER_COUNT);
         Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
