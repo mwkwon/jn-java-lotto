@@ -1,29 +1,24 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.List;
 
 public class LottoMachine {
 
     public static final int LOTTO_PRICE = 1_000;
     private final int lottoCount;
-    private Lottos lottos;
+    private final RandomNumbers randomNumbers;
 
-    public LottoMachine(Money money) {
+    public LottoMachine(Money money, RandomNumbers randomNumbers) {
         lottoCount = money.numberOfLottoCanBuy(LOTTO_PRICE);
+        this.randomNumbers = new RandomNumbers(randomNumbers);
     }
 
     public Lottos purchaseLottos() {
-        ArrayList<Lotto> lottosParms = new ArrayList<>();
-        RandomNumbers randomNumbers = new RandomNumbers();
+        List<Lotto> lottosParms = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             lottosParms.add(new Lotto(new LottoNumbers(randomNumbers.lottoNumbers())));
         }
-        lottos = new Lottos(lottosParms);
-        return lottos;
-    }
-
-    public LinkedHashMap<LottoPrize, Integer> lottosResult(LottoNumbers winningNumbers) {
-        return lottos.lottosResult(winningNumbers);
+        return new Lottos(lottosParms);
     }
 }

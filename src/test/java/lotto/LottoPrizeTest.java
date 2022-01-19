@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class LottoPrizeTest {
@@ -26,6 +26,6 @@ public class LottoPrizeTest {
     @ParameterizedTest
     @MethodSource("로또_맞춘_개수_및_상금")
     void 로또_맞춘_개수에_따른_상금_반환_확인(int matchCount, LottoPrize lottoPrize) {
-        assertEquals(LottoPrize.findLottoPrize(matchCount), lottoPrize);
+        assertThat(LottoPrize.findLottoPrize(matchCount)).isEqualTo(lottoPrize);
     }
 }
