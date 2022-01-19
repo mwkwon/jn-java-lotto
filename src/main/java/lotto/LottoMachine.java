@@ -15,10 +15,10 @@ public class LottoMachine {
     }
 
     public Lottos purchaseLottos() {
-        List<Lotto> lottosParms = new ArrayList<>();
+        List<Lotto> lottosParams = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
-            lottosParms.add(new Lotto(new LottoNumbers(randomNumbers.lottoNumbers())));
+            lottosParams.add(new Lotto(new LottoNumbers(randomNumbers.lottoNumbers())));
         }
-        return new Lottos(lottosParms);
+        return new Lottos(lottosParams);
     }
 }
