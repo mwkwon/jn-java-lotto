@@ -18,12 +18,12 @@ public class InputUtils {
         return scanner.nextLine();
     }
 
-    public static List<Integer> inputWinningNumbers() {
+    public static List<LottoNumber> inputWinningNumbers() {
         System.out.println();
         System.out.println(INPUT_WINNING_NUMBERS);
-        ArrayList<Integer> winningNumbers = new ArrayList<>();
+        List<LottoNumber> winningNumbers = new ArrayList<>();
         for (String number : scanner.nextLine().split(COMMA)) {
-            winningNumbers.add(Integer.parseInt(number.trim()));
+            winningNumbers.add(new LottoNumber(Integer.parseInt(number.trim())));
         }
         return winningNumbers;
     }
