@@ -13,15 +13,11 @@ public class Money {
         this.money = money;
     }
 
-    public Money(String money) {
-        this(moneyStrToInt(money));
-    }
-
-    private static int moneyStrToInt(String money) {
+    public static Money create(String money) {
         if (!Pattern.matches(INTEGER_REGEX, money)) {
             throw new IllegalArgumentException(INVALID_MONEY_EXCEPTION_MESSAGE);
         }
-        return Integer.parseInt(money);
+        return new Money(Integer.parseInt(money));
     }
 
     private void checkMoneyValidation(int money) {

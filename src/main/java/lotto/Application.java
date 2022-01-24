@@ -3,7 +3,7 @@ package lotto;
 public class Application {
     public static void main(String[] args) {
         try {
-            Money money = new Money(InputUtils.inputMoney());
+            Money money = Money.create(InputUtils.inputMoney());
             RandomNumbers randomNumbers = new RandomNumbers();
             LottoMachine lottoMachine = new LottoMachine(money, randomNumbers);
             Lottos lottos = lottoMachine.purchaseLottos();

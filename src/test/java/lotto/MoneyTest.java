@@ -24,13 +24,13 @@ public class MoneyTest {
     @ParameterizedTest
     @ValueSource(strings = {"1000", "2000", "1000000"})
     void 천원이상_문자_타입_돈이_들어온_경우(String money) {
-        new Money(money);
+        Money.create(money);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"가나다", "", "abcd"})
     void 숫자_문자_타입이_아닌_돈이_들어온_경우(String money) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Money(money));
+        assertThatIllegalArgumentException().isThrownBy(() -> Money.create(money));
     }
 
     @ParameterizedTest
