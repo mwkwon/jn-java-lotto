@@ -11,7 +11,7 @@ public class LottoNumbers implements Iterable<LottoNumber>{
     private static final String LOTTO_NUMBERS_NULL_EXCEPTION = "로또 번호는 Null 일 수 없습니다.";
     private static final String LOTTO_NUMBERS_COUNT_EXCEPTION = "로또 번호는 6개의 숫자로 입력해 주세요.";
     private static final int LOTTO_NUMBERS_COUNT = 6;
-    Set<LottoNumber> lottoNumbers;
+    private Set<LottoNumber> lottoNumbers;
 
     public LottoNumbers(Set<LottoNumber> lottoNumbers) {
         init(lottoNumbers);

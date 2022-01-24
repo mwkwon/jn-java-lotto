@@ -7,7 +7,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
     private static final String LOTTO_NUMBERS_RANGE_EXCEPTION = "로또 번호는 1부터 45까지 숫자로 입력해주세요.";
     private static final Integer MIN_NUM = 1;
     private static final Integer MAX_NUM = 45;
-    Integer lottoNumber;
+    private final Integer lottoNumber;
 
     public LottoNumber(Integer lottoNumber) {
         checkLottoNumberRange(lottoNumber);
