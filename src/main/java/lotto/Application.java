@@ -9,7 +9,7 @@ public class Application {
             Lottos lottos = lottoMachine.purchaseLottos();
             OutputUtils.printLottoCount(money.numberOfLottoCanBuy(LottoMachine.LOTTO_PRICE));
             OutputUtils.printLottoNumbers(lottos);
-            Lotto winningLotto = new Lotto(new LottoNumbers(InputUtils.inputWinningNumbers()));
+            Lotto winningLotto = new Lotto(LottoNumbers.create(InputUtils.inputWinningNumbers()));
             LottoResult lottoResult = new LottoResult(lottos, winningLotto);
             OutputUtils.printLottosResult(lottoResult);
             OutputUtils.printReturnOnLotto(lottoResult.rateOfReturn());

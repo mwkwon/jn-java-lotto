@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -11,6 +12,7 @@ public class LottoNumbers implements Iterable<LottoNumber>{
     private static final String LOTTO_NUMBERS_NULL_EXCEPTION = "로또 번호는 Null 일 수 없습니다.";
     private static final String LOTTO_NUMBERS_COUNT_EXCEPTION = "로또 번호는 6개의 숫자로 입력해 주세요.";
     private static final int LOTTO_NUMBERS_COUNT = 6;
+    private static final String COMMA = ",";
     private Set<LottoNumber> lottoNumbers;
 
     public LottoNumbers(Set<LottoNumber> lottoNumbers) {
@@ -26,6 +28,14 @@ public class LottoNumbers implements Iterable<LottoNumber>{
 
     public LottoNumbers(LottoNumbers lottoNumbers) {
         this.lottoNumbers = new TreeSet<>(lottoNumbers.lottoNumbers);
+    }
+
+    public static LottoNumbers create(String strLottoNumbers) {
+        List<LottoNumber> winningNumbers = new ArrayList<>();
+        for (String number : strLottoNumbers.split(COMMA)) {
+            winningNumbers.add(new LottoNumber(Integer.parseInt(number.trim())));
+        }
+        return new LottoNumbers(winningNumbers);
     }
 
     private void init(Set<LottoNumber> lottoNumbers) {
