@@ -6,14 +6,18 @@ import java.util.Map;
 
 public class LottoResult implements Iterable<LottoPrize> {
 
+    private static final String DUPLICATE_BONUS_NUMBER = "로또 당첨 번호와 보너스 번호가 같을 수 없습니다.";
     private final int ZERO = 0;
     private final Map<LottoPrize, Integer> result;
     private final Lottos lottos;
     private final Lotto winningLotto;
+    private final LottoNumber bonusLottoNumber;
 
-    public LottoResult(Lottos lottos, Lotto winningLotto) {
+    public LottoResult(Lottos lottos, Lotto winningLotto, LottoNumber bonusLottoNumber) {
         this.lottos = new Lottos(lottos);
         this.winningLotto = new Lotto(winningLotto);
+        this.bonusLottoNumber = new LottoNumber(bonusLottoNumber);
+        checkBonusLottoNumber();
         this.result = initResult();
         calculatorResult();
     }
@@ -22,6 +26,13 @@ public class LottoResult implements Iterable<LottoPrize> {
         this.result = new LinkedHashMap<>(lottoResult.result);
         this.lottos = new Lottos(lottoResult.lottos);
         this.winningLotto = new Lotto(lottoResult.winningLotto);
+        this.bonusLottoNumber = new LottoNumber(lottoResult.bonusLottoNumber);
+    }
+
+    private void checkBonusLottoNumber() {
+        if (this.winningLotto.isMatchBonus(this.bonusLottoNumber)) {
+            throw new IllegalArgumentException(DUPLICATE_BONUS_NUMBER);
+        }
     }
 
     private Map<LottoPrize, Integer> initResult() {
@@ -34,9 +45,11 @@ public class LottoResult implements Iterable<LottoPrize> {
 
     private void calculatorResult() {
         int matchCount;
+        boolean isMatchBonus;
         for (Lotto lotto : lottos) {
             matchCount = lotto.matchCount(winningLotto);
-            LottoPrize lottoPrize = LottoPrize.findLottoPrize(matchCount);
+            isMatchBonus = lotto.isMatchBonus(bonusLottoNumber);
+            LottoPrize lottoPrize = LottoPrize.findLottoPrize(matchCount, isMatchBonus);
             result.put(lottoPrize, result.get(lottoPrize) + 1);
         }
     }

@@ -14,7 +14,7 @@ public class OutputUtils {
         cloneResult.removeNothing();
         System.out.println("\n당첨 통계\n---------");
         for (LottoPrize lottoPrize : cloneResult) {
-            System.out.printf("%d개 일치 (%d원)- %d개\n", lottoPrize.matchCount, lottoPrize.prize, cloneResult.prizeCount(lottoPrize));
+            System.out.printf(lottoPrize.message + "\n", lottoPrize.matchCount, lottoPrize.prize, cloneResult.prizeCount(lottoPrize));
         }
     }
 

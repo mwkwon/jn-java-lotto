@@ -18,6 +18,14 @@ public class LottoNumber implements Comparable<LottoNumber> {
         this(new Integer(lottoNumber));
     }
 
+    public LottoNumber(LottoNumber lottoNumber) {
+        this.lottoNumber = new Integer(lottoNumber.lottoNumber);
+    }
+
+    public static LottoNumber createBonusLottoNumber(String lottoNumber) {
+        return new LottoNumber(Integer.parseInt(lottoNumber.trim()));
+    }
+
     private void checkLottoNumberRange(Integer lottoNumber) {
         if (Objects.isNull(lottoNumber) || MIN_NUM > lottoNumber || MAX_NUM < lottoNumber) {
             throw new IllegalArgumentException(LOTTO_NUMBERS_RANGE_EXCEPTION);

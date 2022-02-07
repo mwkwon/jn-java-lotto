@@ -42,4 +42,24 @@ public class LottoTest {
     void 로또_맞춘_개수(Lotto lotto, Lotto winningLotto, int matchCount) {
         assertEquals(lotto.matchCount(winningLotto), matchCount);
     }
+
+    static Stream<Arguments> 로또_보너스_번호() {
+        return Stream.of(
+            Arguments.of(
+                new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
+                new LottoNumber(1),
+                true),
+            Arguments.of(
+                new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
+                new LottoNumber(10),
+                false
+            )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("로또_보너스_번호")
+    void 로또_보너스_번호_맞췄는지_여부(Lotto lotto, LottoNumber bonusNumber, boolean isMatchBonus) {
+        assertEquals(lotto.isMatchBonus(bonusNumber), isMatchBonus);
+    }
 }

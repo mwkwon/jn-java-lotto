@@ -10,7 +10,8 @@ public class Application {
             OutputUtils.printLottoCount(money.numberOfLottoCanBuy(LottoMachine.LOTTO_PRICE));
             OutputUtils.printLottoNumbers(lottos);
             Lotto winningLotto = new Lotto(LottoNumbers.create(InputUtils.inputWinningNumbers()));
-            LottoResult lottoResult = new LottoResult(lottos, winningLotto);
+            LottoNumber bonusLottoNumber = LottoNumber.createBonusLottoNumber(InputUtils.inputBonusNumber());
+            LottoResult lottoResult = new LottoResult(lottos, winningLotto, bonusLottoNumber);
             OutputUtils.printLottosResult(lottoResult);
             OutputUtils.printReturnOnLotto(lottoResult.rateOfReturn());
         } catch (Exception e) {

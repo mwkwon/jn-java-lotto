@@ -52,6 +52,10 @@ public class LottoNumbers implements Iterable<LottoNumber>{
         }
     }
 
+    public boolean isMatchBonus(LottoNumber bonusNumber) {
+        return this.lottoNumbers.contains(bonusNumber);
+    }
+
     public int matchCount(Lotto winningLotto) {
         int matchCount = 0;
         for (LottoNumber winningNumber : winningLotto) {
