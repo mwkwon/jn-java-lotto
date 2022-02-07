@@ -25,8 +25,9 @@ public enum LottoPrize {
 
     public static LottoPrize findLottoPrize(Integer matchCount, boolean isMatchBonus) {
         return Arrays.stream(LottoPrize.values())
-                .filter(e -> (matchCount.equals(FIVE) && e.matchCount.equals(matchCount) && e.isMatchBonus.equals(isMatchBonus)) || (!matchCount.equals(FIVE) && e.matchCount.equals(matchCount)))
-                .findFirst()
-                .orElse(LottoPrize.NOTHING);
+            .filter(e -> (matchCount.equals(FIVE) && e.matchCount.equals(matchCount) && e.isMatchBonus.equals(isMatchBonus)) ||
+                (!matchCount.equals(FIVE) && e.matchCount.equals(matchCount)))
+            .findFirst()
+            .orElse(LottoPrize.NOTHING);
     }
 }
