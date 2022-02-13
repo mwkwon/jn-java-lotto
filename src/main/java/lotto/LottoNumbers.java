@@ -17,19 +17,19 @@ public class LottoNumbers {
     }
 
     public List<Integer> getLottoNumbers() {
-        getShuffle();
-        return getSort(getLottoNumber());
+        lottoShuffle();
+        return lottoSort(getLottoSixNumber());
     }
 
-    public List<Integer> getLottoNumber() {
+    public List<Integer> getLottoSixNumber() {
         return lottoNumbers.subList(MIN_SIZE, MAX_SIZE);
     }
 
-    private void getShuffle() {
+    private void lottoShuffle() {
         Collections.shuffle(lottoNumbers);
     }
 
-    private List<Integer> getSort(List<Integer> returnLottoNumber) {
+    private List<Integer> lottoSort(List<Integer> returnLottoNumber) {
         Collections.sort(returnLottoNumber);
         return returnLottoNumber;
     }

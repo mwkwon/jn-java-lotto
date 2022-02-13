@@ -21,7 +21,7 @@ class LottoNumbersTest {
 
     @Test
     void 로또_번호_6개_생성_테스트() {
-        List<Integer> numbers = lottoNumbers.getLottoNumber();
+        List<Integer> numbers = lottoNumbers.getLottoSixNumber();
         assertThat(numbers.size()).isEqualTo(6);
     }
 

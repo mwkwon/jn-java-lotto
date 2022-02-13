@@ -10,5 +10,9 @@ public class Lotto {
         this.lotto = lotto;
     }
 
+    public List<Integer> getLotto() {
+        return lotto;
+    }
+
 
 }
