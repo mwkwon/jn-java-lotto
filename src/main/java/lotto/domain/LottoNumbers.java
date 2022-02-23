@@ -1,5 +1,6 @@
-package lotto;
+package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class LottoNumbers {
     private static final int MAX_SIZE = 6;
     private static final String LOTTO_SIZE_ERROR = "로또 번호는 6개 이상이여야 합니다.";
 
-    public List<Integer> lottoNumbers;
+    private List<Integer> lottoNumbers;
 
     public LottoNumbers(List<Integer> lottoNumbers) {
         validLottoNumbers(lottoNumbers);
@@ -31,7 +32,7 @@ public class LottoNumbers {
 
     private List<Integer> lottoSort(List<Integer> returnLottoNumber) {
         Collections.sort(returnLottoNumber);
-        return returnLottoNumber;
+        return new ArrayList<>(returnLottoNumber);
     }
 
     private void validLottoNumbers(List<Integer> lottoNumbers) {

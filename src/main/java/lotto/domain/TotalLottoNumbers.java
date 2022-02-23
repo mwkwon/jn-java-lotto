@@ -1,11 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TotalLottoNumbers {
 
-    public static final int BOUND = 45;
+    private static final int BOUND = 45;
 
     public final List<Integer> lottoNumbers;
 
@@ -19,7 +19,7 @@ public class TotalLottoNumbers {
 
     public List<Integer> makeTotalLottoNumbers() {
         List<Integer> temp = new ArrayList<>();
-        for (int i = 0; i < BOUND; i++) {
+        for (int i = 1; i <= BOUND; i++) {
             temp.add(i);
         }
         return temp;

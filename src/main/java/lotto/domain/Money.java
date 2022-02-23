@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public class Money {
 
@@ -7,7 +7,7 @@ public class Money {
     private static final int COST = 1000;
     private static final int ZERO = 0;
 
-    public final int money;
+    private final int money;
 
     public Money(int money) {
         validMoney(money);
