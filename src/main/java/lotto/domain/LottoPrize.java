@@ -9,8 +9,8 @@ public enum LottoPrize {
     public final int count;
     public final int prize;
 
-    LottoPrize(int count, int money) {
+    LottoPrize(int count, int prize) {
         this.count = count;
-        this.prize = money;
+        this.prize = prize;
     }
 }
