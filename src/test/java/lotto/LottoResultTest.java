@@ -20,7 +20,8 @@ public class LottoResultTest {
                         new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 21, 22, 23}).boxed().map(LottoNumber::new).collect(Collectors.toList())))
                 )
         );
-        LottoResult lottoPrizes = new LottoResult(lottos, winningLotto);
+        LottoNumber bonusNumber = new LottoNumber(14);
+        LottoResult lottoPrizes = new LottoResult(lottos, winningLotto, bonusNumber);
         assertThat(lottoPrizes.rateOfReturn()).isEqualTo(5.0f);
     }
 }

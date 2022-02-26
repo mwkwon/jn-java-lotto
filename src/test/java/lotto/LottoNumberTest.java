@@ -19,4 +19,10 @@ public class LottoNumberTest {
     void 로또_번호_범위_유효성_검사(int lottoNumber) {
         assertThatIllegalArgumentException().isThrownBy(() -> new LottoNumber(lottoNumber));
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2", "3", "10", "44", "45"})
+    void 보너스_로또_번호_생성(String bonusNumber) {
+        LottoNumber.createBonusLottoNumber(bonusNumber);
+    }
 }

@@ -10,10 +10,12 @@ public class LottoResult implements Iterable<LottoPrize> {
     private final Map<LottoPrize, Integer> result;
     private final Lottos lottos;
     private final Lotto winningLotto;
+    private final LottoNumber bonusLottoNumber;
 
-    public LottoResult(Lottos lottos, Lotto winningLotto) {
+    public LottoResult(Lottos lottos, Lotto winningLotto, LottoNumber bonusLottoNumber) {
         this.lottos = new Lottos(lottos);
         this.winningLotto = new Lotto(winningLotto);
+        this.bonusLottoNumber = new LottoNumber(bonusLottoNumber);
         this.result = initResult();
         calculatorResult();
     }
@@ -22,6 +24,7 @@ public class LottoResult implements Iterable<LottoPrize> {
         this.result = new LinkedHashMap<>(lottoResult.result);
         this.lottos = new Lottos(lottoResult.lottos);
         this.winningLotto = new Lotto(lottoResult.winningLotto);
+        this.bonusLottoNumber = new LottoNumber(lottoResult.bonusLottoNumber);
     }
 
     private Map<LottoPrize, Integer> initResult() {
@@ -34,9 +37,11 @@ public class LottoResult implements Iterable<LottoPrize> {
 
     private void calculatorResult() {
         int matchCount;
+        boolean isMatchBonus;
         for (Lotto lotto : lottos) {
             matchCount = lotto.matchCount(winningLotto);
-            LottoPrize lottoPrize = LottoPrize.findLottoPrize(matchCount);
+            isMatchBonus = lotto.isMatchBonus(bonusLottoNumber);
+            LottoPrize lottoPrize = LottoPrize.findLottoPrize(matchCount, isMatchBonus);
             result.put(lottoPrize, result.get(lottoPrize) + 1);
         }
     }

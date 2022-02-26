@@ -18,6 +18,10 @@ public class Lotto implements Iterable<LottoNumber> {
         return lottoNumbers.matchCount(winningLotto);
     }
 
+    public boolean isMatchBonus(LottoNumber bonusNumber) {
+        return lottoNumbers.isMatchBonus(bonusNumber);
+    }
+
     @Override
     public String toString() {
         return lottoNumbers.toString();
