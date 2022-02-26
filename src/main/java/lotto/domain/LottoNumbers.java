@@ -1,14 +1,12 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoNumbers {
 
-    private static final int MIN_SIZE = 0;
     private static final int MAX_SIZE = 6;
     private static final String LOTTO_SIZE_ERROR = "로또 번호는 6개 이상이여야 합니다.";
+
 
     private List<Integer> lottoNumbers;
 
@@ -18,21 +16,7 @@ public class LottoNumbers {
     }
 
     public List<Integer> getLottoNumbers() {
-        lottoShuffle();
-        return lottoSort(getLottoSixNumber());
-    }
-
-    public List<Integer> getLottoSixNumber() {
-        return lottoNumbers.subList(MIN_SIZE, MAX_SIZE);
-    }
-
-    private void lottoShuffle() {
-        Collections.shuffle(lottoNumbers);
-    }
-
-    private List<Integer> lottoSort(List<Integer> returnLottoNumber) {
-        Collections.sort(returnLottoNumber);
-        return new ArrayList<>(returnLottoNumber);
+        return this.lottoNumbers;
     }
 
     private void validLottoNumbers(List<Integer> lottoNumbers) {
