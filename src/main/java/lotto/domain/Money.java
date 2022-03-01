@@ -7,25 +7,30 @@ public class Money {
     private static final int COST = 1000;
     private static final int ZERO = 0;
 
-    private final int money;
+    private final int price;
 
     public Money(int money) {
-        validMoney(money);
-        this.money = money;
+        validNegativeMoney(money);
+        validDivideMoney(money);
+        this.price = money;
     }
 
     public int calculate() {
-        return this.money / COST;
+        return this.price / COST;
     }
 
-    public int getMoney() {
-        return this.money;
+    public int getPrice() {
+        return this.price;
     }
 
-    private void validMoney(int money) {
+    private void validNegativeMoney(int money) {
         if (money <= ZERO) {
             throw new IllegalArgumentException(MONEY_NEGATIVE_ERROR);
-        } else if (money % COST != ZERO) {
+        }
+    }
+
+    private void validDivideMoney(int money) {
+        if (money % COST != ZERO) {
             throw new IllegalArgumentException(MONEY_DIVIDE_ERROR);
         }
     }

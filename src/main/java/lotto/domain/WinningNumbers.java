@@ -5,19 +5,29 @@ import java.util.List;
 
 public class WinningNumbers {
 
-    private static final String SPACE = " ";
+    private static final String WINNING_SIZE_ERROR = "로또 번호는 6개여야 합니다.";
+    private static final int SIZE = 6;
+    private static final String REGEX = "[^0-9]";
     private static final String BLANK = "";
-    private final String[] winningStrings;
 
-    public WinningNumbers(String[] winningStrings) {
-        this.winningStrings = winningStrings;
+    private final String[] inputNumbers;
+
+    public WinningNumbers(String[] inputNumbers) {
+        validSizeCheck(inputNumbers);
+        this.inputNumbers = inputNumbers;
     }
 
-    public LottoNumbers changeWinningLotto() {
+    public Lotto changeWinningLotto() {
         List<Integer> winningLotto = new ArrayList<>();
-        for (String string : winningStrings) {
-            winningLotto.add(Integer.valueOf(string.replace(SPACE, BLANK)));
+        for (String string : inputNumbers) {
+            winningLotto.add(Integer.valueOf(string.replaceAll(REGEX, BLANK)));
         }
-        return new LottoNumbers(winningLotto);
+        return new Lotto(winningLotto);
+    }
+
+    private void validSizeCheck(String[] inputNumbers) {
+        if (inputNumbers.length != SIZE) {
+            throw new IllegalArgumentException(WINNING_SIZE_ERROR);
+        }
     }
 }

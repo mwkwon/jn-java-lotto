@@ -1,6 +1,5 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.Money;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -15,7 +14,7 @@ public class MoneyTest {
     @Test
     void 돈_생성_테스트() {
         Money money = new Money(1000);
-        assertThat(money.getMoney()).isEqualTo(1000);
+        assertThat(money.getPrice()).isEqualTo(1000);
     }
 
     @ParameterizedTest

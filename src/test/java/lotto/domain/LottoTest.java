@@ -1,37 +1,42 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.LottoNumbers;
-import lotto.domain.TotalLottoNumbers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class LottoNumbersTest {
+class LottoTest {
 
-    private LottoNumbers lottoNumbers;
+    private Lotto lotto;
 
     @BeforeEach
     void setUp() {
         TotalLottoNumbers totalLottoNumbers = new TotalLottoNumbers();
-        lottoNumbers = new LottoNumbers(totalLottoNumbers.getTotalLottoNumbers());
+        lotto = totalLottoNumbers.createLottoNumbers();
     }
 
     @Test
-    void 로또_번호_6개_생성_테스트() {
-        List<Integer> numbers = lottoNumbers.getLottoNumbers();
-        assertThat(numbers.size()).isEqualTo(6);
+    void 로또_번호_사이즈_테스트() {
+        assertThat(lotto.getLottoSize()).isEqualTo(6);
     }
 
     @Test
-    void 총로또_번호_리스트_6자_미만_테스트() {
+    void 로또_번호_중첩_테스트() {
+        Set<Integer> temp = new HashSet<>(lotto.getLottoNumbers());
+        assertThat(temp.size()).isEqualTo(6);
+    }
+
+    @Test
+    void 총_로또_번호_6개_아닌_테스트() {
         List<Integer> test = new ArrayList<>();
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new LottoNumbers(test);
+            new Lotto(test);
         });
     }
 

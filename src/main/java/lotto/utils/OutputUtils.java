@@ -2,8 +2,8 @@ package lotto.utils;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoPrize;
+import lotto.domain.Lottos;
 
-import java.util.List;
 import java.util.Map;
 
 public class OutputUtils {
@@ -16,9 +16,9 @@ public class OutputUtils {
         System.out.println(count + LOTTO_COUNT_OUTPUT);
     }
 
-    public static void lottosOutput(List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.getLotto().getLottoNumbers().toString());
+    public static void lottosOutput(Lottos lottos) {
+        for (Lotto lotto : lottos.getLottos()) {
+            System.out.println(lotto.getLottoNumbers().toString());
         }
     }
 
@@ -26,10 +26,9 @@ public class OutputUtils {
         System.out.println();
         System.out.println(STATISTICS_QUESTION_OUTPUT);
         System.out.println(LINE_OUTPUT);
-        System.out.println(String.format("%d개 일치 (%d원)- %d개", LottoPrize.THREE_MATCH.count, LottoPrize.THREE_MATCH.prize, winningResult.get(LottoPrize.THREE_MATCH.count)));
-        System.out.println(String.format("%d개 일치 (%d원)- %d개", LottoPrize.FOUR_MATCH.count, LottoPrize.FOUR_MATCH.prize, winningResult.get(LottoPrize.FOUR_MATCH.count)));
-        System.out.println(String.format("%d개 일치 (%d원)- %d개", LottoPrize.FIVE_MATCH.count, LottoPrize.FIVE_MATCH.prize, winningResult.get(LottoPrize.FIVE_MATCH.count)));
-        System.out.println(String.format("%d개 일치 (%d원)- %d개", LottoPrize.SIX_MATCH.count, LottoPrize.SIX_MATCH.prize, winningResult.get(LottoPrize.SIX_MATCH.count)));
+        for (LottoPrize lottoPrize : LottoPrize.values()) {
+            System.out.println(String.format("%d개 일치 (%d원)- %d개", lottoPrize.count, lottoPrize.prize, winningResult.get(lottoPrize.count)));
+        }
     }
 
     public static void profitOutput(double profit) {

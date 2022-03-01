@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Lottos {
 
+    // lottos 말고 다른 명칭 사용하라고 하는데...
+    // 좋은 다른 명칭이 생각이 안난다..
     private final List<Lotto> lottos;
 
     public Lottos() {
@@ -19,13 +21,14 @@ public class Lottos {
         return lottos;
     }
 
-    public List<Lotto> createLottos(int count, TotalLottoNumbers totalLottoNumbers) {
+    public int getLottosSize() {
+        return lottos.size();
+    }
+
+    public void createLottos(int count, TotalLottoNumbers totalLottoNumbers) {
         for (int i = 0; i < count; i++) {
-            LottoNumbers lottoNumbers = totalLottoNumbers.createLottoNumbers();
-            Lotto lotto = new Lotto(lottoNumbers);
-            lottos.add(lotto);
+            lottos.add(totalLottoNumbers.createLottoNumbers());
         }
-        return lottos;
     }
 
 

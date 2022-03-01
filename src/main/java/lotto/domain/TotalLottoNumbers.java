@@ -11,17 +11,30 @@ public class TotalLottoNumbers {
     private static final int START_BOUND = 1;
     private static final int END_BOUND = 45;
 
-    public final List<Integer> totalLottoNumbers;
+    public final List<Integer> totalNumbers;
 
     public TotalLottoNumbers() {
-        totalLottoNumbers = new ArrayList<>(makeTotalLottoNumbers());
+        totalNumbers = new ArrayList<>(makeTotalLottoNumbers());
     }
 
-    public List<Integer> getTotalLottoNumbers() {
-        return totalLottoNumbers;
+    public List<Integer> getTotalNumbers() {
+        return totalNumbers;
     }
 
-    public List<Integer> makeTotalLottoNumbers() {
+    public int getTotalLottoSize() {
+        return totalNumbers.size();
+    }
+
+    public Lotto createLottoNumbers() {
+        lottoShuffle();
+        return new Lotto(lottoSort(getLottoSixNumber()));
+    }
+
+    public List<Integer> getLottoSixNumber() {
+        return totalNumbers.subList(MIN_SIZE, MAX_SIZE);
+    }
+
+    private List<Integer> makeTotalLottoNumbers() {
         List<Integer> temp = new ArrayList<>();
         for (int i = START_BOUND; i <= END_BOUND; i++) {
             temp.add(i);
@@ -29,17 +42,8 @@ public class TotalLottoNumbers {
         return temp;
     }
 
-    public LottoNumbers createLottoNumbers() {
-        lottoShuffle();
-        return new LottoNumbers(lottoSort(getLottoSixNumber()));
-    }
-
-    public List<Integer> getLottoSixNumber() {
-        return totalLottoNumbers.subList(MIN_SIZE, MAX_SIZE);
-    }
-
     private void lottoShuffle() {
-        Collections.shuffle(totalLottoNumbers);
+        Collections.shuffle(totalNumbers);
     }
 
     private List<Integer> lottoSort(List<Integer> returnLottoNumber) {
