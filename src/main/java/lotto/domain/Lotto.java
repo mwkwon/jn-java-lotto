@@ -7,19 +7,19 @@ public class Lotto {
     private static final int SIZE = 6;
     private static final String LOTTO_SIZE_ERROR = "로또 번호는 6개 이상이여야 합니다.";
 
-    private final List<Integer> lottoNumbers;
+    private final List<Integer> lotto;
 
     public Lotto(List<Integer> lotto) {
         validLottoNumbers(lotto);
-        this.lottoNumbers = lotto;
+        this.lotto = lotto;
     }
 
-    public List<Integer> getLottoNumbers() {
-        return this.lottoNumbers;
+    public List<Integer> getLotto() {
+        return this.lotto;
     }
 
     public int getLottoSize() {
-        return lottoNumbers.size();
+        return lotto.size();
     }
 
     private void validLottoNumbers(List<Integer> lottoNumbers) {

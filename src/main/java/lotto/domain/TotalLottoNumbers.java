@@ -26,7 +26,7 @@ public class TotalLottoNumbers {
     }
 
     public Lotto createLottoNumbers() {
-        lottoShuffle();
+        Collections.shuffle(totalNumbers);
         return new Lotto(lottoSort(getLottoSixNumber()));
     }
 
@@ -40,10 +40,6 @@ public class TotalLottoNumbers {
             temp.add(i);
         }
         return temp;
-    }
-
-    private void lottoShuffle() {
-        Collections.shuffle(totalNumbers);
     }
 
     private List<Integer> lottoSort(List<Integer> returnLottoNumber) {

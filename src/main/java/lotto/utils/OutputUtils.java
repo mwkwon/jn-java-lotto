@@ -18,7 +18,7 @@ public class OutputUtils {
 
     public static void lottosOutput(Lottos lottos) {
         for (Lotto lotto : lottos.getLottos()) {
-            System.out.println(lotto.getLottoNumbers().toString());
+            System.out.println(lotto.getLotto().toString());
         }
     }
 

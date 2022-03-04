@@ -28,7 +28,7 @@ class LottoTest {
 
     @Test
     void 로또_번호_중첩_테스트() {
-        Set<Integer> temp = new HashSet<>(lotto.getLottoNumbers());
+        Set<Integer> temp = new HashSet<>(lotto.getLotto());
         assertThat(temp.size()).isEqualTo(6);
     }
 
