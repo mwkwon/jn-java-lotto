@@ -17,7 +17,7 @@ class TotalLottoNumbersTest {
     @Test
     void 총_로또_번호_값_테스트() {
         for (int i = 1; i <= 45; i++) {
-            assertThat(totalLottoNumbers.getTotalNumbers()).contains(i);
+            assertThat(totalLottoNumbers.getTotalNumbers()).contains(new LottoNumber(i));
         }
     }
 

@@ -11,13 +11,13 @@ public class TotalLottoNumbers {
     private static final int START_BOUND = 1;
     private static final int END_BOUND = 45;
 
-    public final List<Integer> totalNumbers;
+    public final List<LottoNumber> totalNumbers;
 
     public TotalLottoNumbers() {
         totalNumbers = new ArrayList<>(makeTotalLottoNumbers());
     }
 
-    public List<Integer> getTotalNumbers() {
+    public List<LottoNumber> getTotalNumbers() {
         return totalNumbers;
     }
 
@@ -30,19 +30,19 @@ public class TotalLottoNumbers {
         return new Lotto(lottoSort(getLottoSixNumber()));
     }
 
-    public List<Integer> getLottoSixNumber() {
+    private List<LottoNumber> getLottoSixNumber() {
         return totalNumbers.subList(MIN_SIZE, MAX_SIZE);
     }
 
-    private List<Integer> makeTotalLottoNumbers() {
-        List<Integer> temp = new ArrayList<>();
+    private List<LottoNumber> makeTotalLottoNumbers() {
+        List<LottoNumber> temp = new ArrayList<>();
         for (int i = START_BOUND; i <= END_BOUND; i++) {
-            temp.add(i);
+            temp.add(new LottoNumber(i));
         }
         return temp;
     }
 
-    private List<Integer> lottoSort(List<Integer> returnLottoNumber) {
+    private List<LottoNumber> lottoSort(List<LottoNumber> returnLottoNumber) {
         Collections.sort(returnLottoNumber);
         return new ArrayList<>(returnLottoNumber);
     }

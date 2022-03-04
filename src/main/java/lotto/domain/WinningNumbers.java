@@ -21,9 +21,9 @@ public class WinningNumbers {
     }
 
     public Lotto changeWinningLotto() {
-        List<Integer> winningLotto = new ArrayList<>();
+        List<LottoNumber> winningLotto = new ArrayList<>();
         for (String numberString : inputNumbers) {
-            winningLotto.add(WinningNumberChange(numberString));
+            winningLotto.add(new LottoNumber(WinningNumberChange(numberString)));
         }
         return new Lotto(winningLotto);
     }

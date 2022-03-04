@@ -28,13 +28,13 @@ class LottoTest {
 
     @Test
     void 로또_번호_중첩_테스트() {
-        Set<Integer> temp = new HashSet<>(lotto.getLotto());
+        Set<LottoNumber> temp = new HashSet<>(lotto.getLotto());
         assertThat(temp.size()).isEqualTo(6);
     }
 
     @Test
     void 총_로또_번호_6개_아닌_테스트() {
-        List<Integer> test = new ArrayList<>();
+        List<LottoNumber> test = new ArrayList<>();
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new Lotto(test);
         });

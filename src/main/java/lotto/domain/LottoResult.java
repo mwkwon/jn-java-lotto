@@ -46,13 +46,13 @@ public class LottoResult {
 
     private void winningLottoCheck(Lotto lotto) {
         int count = 0;
-        for (Integer lottoNumber : winningLotto.getLotto()) {
+        for (LottoNumber lottoNumber : winningLotto.getLotto()) {
             count = winningCount(lotto, lottoNumber, count);
         }
         putLottoResult(count);
     }
 
-    private int winningCount(Lotto lotto, Integer winningNumber, int count) {
+    private int winningCount(Lotto lotto, LottoNumber winningNumber, int count) {
         if (lotto.getLotto().contains(winningNumber)) {
             count++;
         }

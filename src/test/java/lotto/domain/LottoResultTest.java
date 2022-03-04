@@ -17,9 +17,9 @@ class LottoResultTest {
     @BeforeEach
     void setUp() {
         // 당첨 로또 번호 생성
-        Lotto winningLotto = new Lotto(asList(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = new Lotto(asList(new LottoNumber(1), new LottoNumber(2), new LottoNumber(3), new LottoNumber(4), new LottoNumber(5), new LottoNumber(6)));
         // 로또 생성
-        Lotto lotto = new Lotto(asList(1,2,3,13,14,15));
+        Lotto lotto = new Lotto(asList(new LottoNumber(1), new LottoNumber(2), new LottoNumber(3), new LottoNumber(12), new LottoNumber(13), new LottoNumber(14)));
         // 로또들 생성
         Lottos lottos = new Lottos(Collections.singletonList(lotto));
         // 로또 결과 생성
@@ -52,6 +52,7 @@ class LottoResultTest {
     }, delimiter = ':')
     void 로또_당첨_체크_테스트(int key, int value) {
         lottoResult.winningLottosCheck();
+        System.out.println(lottoResult.getWinningResult().values());
         assertThat(lottoResult.getWinningResult()).containsEntry(key, value);
     }
 
