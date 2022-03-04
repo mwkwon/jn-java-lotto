@@ -1,7 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class Lotto {
 
@@ -27,5 +27,10 @@ public class Lotto {
         if (lottoNumbers.size() < SIZE) {
             throw new IllegalArgumentException(LOTTO_SIZE_ERROR);
         }
+    }
+
+    @Override
+    public String toString() {
+        return lotto.toString();
     }
 }

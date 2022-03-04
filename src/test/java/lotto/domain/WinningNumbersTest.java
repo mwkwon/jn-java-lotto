@@ -16,8 +16,7 @@ class WinningNumbersTest {
             "1,2,3,4,5,6:6",
     }, delimiter = ':')
     void 당첨_번호_정상_입력_테스트(String s, int size) {
-        String[] strings = s.split(",");
-        WinningNumbers winningNumbers = new WinningNumbers(strings);
+        WinningNumbers winningNumbers = new WinningNumbers(s);
         Lotto lotto = winningNumbers.changeWinningLotto();
         assertThat(lotto.getLottoSize()).isEqualTo(size);
     }
@@ -30,9 +29,8 @@ class WinningNumbersTest {
             "1,2,3,4,5,6,7"
     }, delimiter = ':')
     void 당첨_번호_에러_입력_테스트(String s) {
-        String[] strings = s.split(",");
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new WinningNumbers(strings);
+            new WinningNumbers(s);
         });
     }
 }

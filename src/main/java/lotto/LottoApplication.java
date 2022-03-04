@@ -6,8 +6,6 @@ import lotto.utils.OutputUtils;
 
 public class LottoApplication {
 
-    public static final String COMMA = ",";
-
     public static void main(String[] args) {
         Money money = new Money(InputUtils.lottoStartInput());
 
@@ -22,8 +20,7 @@ public class LottoApplication {
 
         // lottos 생성
         OutputUtils.lottosOutput(lottos);
-        String winningString = InputUtils.lottoWinningNumberInput();
-        WinningNumbers winningNumbers = new WinningNumbers(winningString.split(COMMA));
+        WinningNumbers winningNumbers = new WinningNumbers(InputUtils.lottoWinningNumberInput());
 
         // 당첨 로또 번호 생성
         Lotto winningLotto = winningNumbers.changeWinningLotto();
