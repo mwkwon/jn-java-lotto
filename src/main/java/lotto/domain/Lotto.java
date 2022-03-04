@@ -27,6 +27,4 @@ public class Lotto {
             throw new IllegalArgumentException(LOTTO_SIZE_ERROR);
         }
     }
-
-
 }

@@ -44,5 +44,4 @@ public class MoneyTest {
             new Money(expect);
         });
     }
-
 }

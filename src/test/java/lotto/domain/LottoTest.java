@@ -39,5 +39,4 @@ class LottoTest {
             new Lotto(test);
         });
     }
-
 }
