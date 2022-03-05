@@ -10,7 +10,7 @@ public class LottoApplication {
         Money money = new Money(InputUtils.lottoStartInput());
 
         // 로또 횟수
-        int count = money.calculate();
+        int count = money.lottoQuantity();
         OutputUtils.lottoCountOutput(count);
 
         // 1 ~ 45 로또 총 번호

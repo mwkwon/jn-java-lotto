@@ -5,8 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 
 public class MoneyTest {
@@ -26,22 +25,22 @@ public class MoneyTest {
     }, delimiter = ':')
     void 돈_액수에따른_로또_횟수_계산_테스트(int cost, int count) {
         Money money = new Money(cost);
-        assertThat(money.calculate()).isEqualTo(count);
+        assertThat(money.lottoQuantity()).isEqualTo(count);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, -1000, -2000, -3000})
     void 돈_0_또는_음수_에러_테스트(int expect) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Money(expect);
-        });
+        assertThatThrownBy(() -> new Money(expect))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("돈은 음수이거나 0일 수 없습니다.");
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {500, 800, 1200, 1700})
-    void 돈_1000원_단위_아닌_에러_테스트(int expect) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Money(expect);
-        });
+    @ValueSource(ints = {500, 600, 700, 800, 900})
+    void 돈_1000원_보다_작은_경우_에러_테스트(int expect) {
+        assertThatThrownBy(() -> new Money(expect))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("돈은 1000원 보다 작을 수 없습니다.");
     }
 }

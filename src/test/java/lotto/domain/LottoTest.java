@@ -8,8 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class LottoTest {
 
@@ -33,10 +32,10 @@ class LottoTest {
     }
 
     @Test
-    void 총_로또_번호_6개_아닌_테스트() {
+    void 총_로또_번호_6개_아닌_경우_에러_테스트() {
         List<LottoNumber> test = new ArrayList<>();
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Lotto(test);
-        });
+        assertThatThrownBy(()-> new Lotto(test))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("로또 번호는 6개여야 합니다.");
     }
 }
