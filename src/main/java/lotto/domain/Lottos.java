@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lottos {
-
+    private static final int ZERO = 0;
     private final List<Lotto> lottos;
 
     public Lottos() {
@@ -24,7 +24,7 @@ public class Lottos {
     }
 
     public void createLottos(int count, TotalLottoNumbers totalLottoNumbers) {
-        for (int i = 0; i < count; i++) {
+        for (int i = ZERO; i < count; i++) {
             lottos.add(totalLottoNumbers.createLottoNumbers());
         }
     }

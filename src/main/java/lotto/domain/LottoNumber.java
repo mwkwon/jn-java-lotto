@@ -3,7 +3,6 @@ package lotto.domain;
 import java.util.Objects;
 
 public class LottoNumber implements Comparable<LottoNumber>{
-
     private static final String LOTTO_NUMBER_BOUND_ERROR = "로또 번호는 1 ~ 45 사이에 숫자만 가능합니다.";
     private static final int START_BOUND = 1;
     private static final int END_BOUND = 45;

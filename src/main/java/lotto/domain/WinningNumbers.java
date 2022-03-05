@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumbers {
-
     private static final String WINNING_SIZE_ERROR = "로또 번호는 6개여야 합니다.";
     private static final String WINNING_BOUND_ERROR = "로또 번호는 1 ~ 45 사이에 숫자만 가능합니다.";
     private static final String REGEX = "[^0-9]";
@@ -13,7 +12,6 @@ public class WinningNumbers {
     private static final int SIZE = 6;
     private static final int START_BOUND = 1;
     private static final int END_BOUND = 45;
-
     private final String[] inputNumbers;
 
     public WinningNumbers(String inputNumber) {
@@ -33,8 +31,6 @@ public class WinningNumbers {
     }
 
     private Integer WinningNumberChange(String numberString) {
-        // 1,2,3,4,5,6,
-        // 1,ㅇㅂㅈ,5,436ㅅㅎㄹ 이런식으로 들어와도 replace로 모두 걸러주기 때문에 개수만 맞다면 정상 작동한다 -> 이거를 에러로 뜨게 변경해야겠다.
         return validBoundCheck(Integer.valueOf(numberString.replaceAll(REGEX, BLANK)));
     }
 

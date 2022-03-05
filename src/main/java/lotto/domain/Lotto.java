@@ -3,10 +3,8 @@ package lotto.domain;
 import java.util.List;
 
 public class Lotto {
-
     private static final int SIZE = 6;
     private static final String LOTTO_SIZE_ERROR = "로또 번호는 6개여야 합니다.";
-
     private final List<LottoNumber> lotto;
 
     public Lotto(List<LottoNumber> lotto) {

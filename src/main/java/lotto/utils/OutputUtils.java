@@ -7,7 +7,6 @@ import lotto.domain.Lottos;
 import java.util.Map;
 
 public class OutputUtils {
-
     private static final String LOTTO_COUNT_OUTPUT = "개를 구매했습니다.";
     private static final String STATISTICS_QUESTION_OUTPUT = "당첨통계";
     private static final String LINE_OUTPUT = "----------";

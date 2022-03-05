@@ -1,12 +1,10 @@
 package lotto.domain;
 
 public class Money {
-
     private static final String MONEY_NEGATIVE_ERROR = "돈은 음수이거나 0일 수 없습니다.";
     private static final String MONEY_MINIMUM_ERROR = "돈은 1000원 보다 작을 수 없습니다.";
     private static final int COST = 1000;
     private static final int ZERO = 0;
-
     private final int price;
 
     public Money(int price) {

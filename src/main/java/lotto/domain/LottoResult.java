@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LottoResult {
-
     private static final int ZERO = 0;
     private static final int BOUND = 6;
-
     private final Map<Integer, Integer> winningResult;
     private final Lottos lottos;
     private final Lotto winningLotto;
@@ -29,7 +27,7 @@ public class LottoResult {
     }
 
     public double winningProfit(int money) {
-        double sum = 0;
+        double sum = ZERO;
         for (LottoPrize lottoPrize : LottoPrize.values()) {
             sum += winningResult.get(lottoPrize.count) * lottoPrize.prize;
         }
@@ -45,7 +43,7 @@ public class LottoResult {
     }
 
     private void winningLottoCheck(Lotto lotto) {
-        int count = 0;
+        int count = ZERO;
         for (LottoNumber lottoNumber : winningLotto.getLotto()) {
             count = winningCount(lotto, lottoNumber, count);
         }
