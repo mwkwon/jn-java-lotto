@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -21,6 +20,10 @@ public class Lotto {
 
     public int getLottoSize() {
         return lotto.size();
+    }
+
+    public boolean lottoWinningCheck(LottoNumber winningNumber) {
+        return lotto.contains(winningNumber);
     }
 
     private void validLottoNumbers(List<LottoNumber> lottoNumbers) {

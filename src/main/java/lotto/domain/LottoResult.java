@@ -53,7 +53,7 @@ public class LottoResult {
     }
 
     private int winningCount(Lotto lotto, LottoNumber winningNumber, int count) {
-        if (lotto.getLotto().contains(winningNumber)) {
+        if (lotto.lottoWinningCheck(winningNumber)) {
             count++;
         }
         return count;

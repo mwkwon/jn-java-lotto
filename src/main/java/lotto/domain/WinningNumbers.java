@@ -6,7 +6,7 @@ import java.util.List;
 public class WinningNumbers {
 
     private static final String WINNING_SIZE_ERROR = "로또 번호는 6개여야 합니다.";
-    private static final String WINNING_BOUND_ERROR = "로또 번호는 1 ~ 45 사이에 숫자 입니다.";
+    private static final String WINNING_BOUND_ERROR = "로또 번호는 1 ~ 45 사이에 숫자만 가능합니다.";
     private static final String REGEX = "[^0-9]";
     private static final String BLANK = "";
     private static final String COMMA = ",";

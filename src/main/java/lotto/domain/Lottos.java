@@ -28,6 +28,4 @@ public class Lottos {
             lottos.add(totalLottoNumbers.createLottoNumbers());
         }
     }
-
-
 }
