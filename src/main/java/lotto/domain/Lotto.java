@@ -1,18 +1,20 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private static final int SIZE = 6;
     private static final String LOTTO_SIZE_ERROR = "로또 번호는 6개여야 합니다.";
-    private final List<LottoNumber> lotto;
+    private final Set<LottoNumber> lotto;
 
     public Lotto(List<LottoNumber> lotto) {
-        validLottoNumbers(lotto);
-        this.lotto = lotto;
+        this.lotto = new HashSet<>(lotto);
+        validLottoNumbers(this.lotto);
     }
 
-    public List<LottoNumber> getLotto() {
+    public Set<LottoNumber> getLotto() {
         return this.lotto;
     }
 
@@ -24,7 +26,7 @@ public class Lotto {
         return lotto.contains(winningNumber);
     }
 
-    private void validLottoNumbers(List<LottoNumber> lottoNumbers) {
+    private void validLottoNumbers(Set<LottoNumber> lottoNumbers) {
         if (lottoNumbers.size() != SIZE) {
             throw new IllegalArgumentException(LOTTO_SIZE_ERROR);
         }
