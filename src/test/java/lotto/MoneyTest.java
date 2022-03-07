@@ -41,6 +41,6 @@ public class MoneyTest {
             "30000, 30"
     })
     void 로또_살_수_있는_개수(int money, int lottoCount) {
-        assertEquals(new Money(money).numberOfLottoCanBuy(1000), lottoCount);
+        assertEquals(new Money(money).numberOfLottoCanBuy(1000), new LottoCount(lottoCount));
     }
 }

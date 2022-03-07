@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -14,6 +16,8 @@ public class InputUtils {
     private static final String INPUT_WINNING_NUMBERS_MAX_TRY_MESSAGE = "당첨 번호 입력 가능 횟수를 초과했습니다.";
     private static final String INPUT_BONUS_NUMBER_MAX_TRY_MESSAGE = "보너스 볼 번호 입력 가능 횟수를 초과했습니다.";
     private static final String DUPLICATE_BONUS_NUMBER = "로또 당첨 번호와 보너스 번호가 같을 수 없습니다.";
+    private static final String INPUT_MANUAL_LOTTO_COUNT = "수동으로 구매할 로또 수를 입력해 주세요.";
+    private static final String INPUT_MANUAL_LOTTO_NUMBER = "수동으로 구매할 번호를 입력해 주세요.";
 
     private InputUtils() {
     }
@@ -37,7 +41,7 @@ public class InputUtils {
         LottoNumbers lottoNumbers = null;
 
         while (Objects.isNull(lottoNumbers) && i < MAX_TRY_COUNT) {
-            lottoNumbers = createLottoNumbers();
+            lottoNumbers = createWinningLottoNumbers();
             i++;
         }
         if (Objects.isNull(lottoNumbers)) {
@@ -60,6 +64,44 @@ public class InputUtils {
         return lottoNumber;
     }
 
+    public static LottoCount inputManualLottoCount(LottoCount totalLottoCount) {
+        int i = 0;
+        LottoCount lottoCount = null;
+
+        while (Objects.isNull(lottoCount) && i < MAX_TRY_COUNT) {
+            lottoCount = createLottoCount(totalLottoCount);
+            i++;
+        }
+        if (Objects.isNull(lottoCount)) {
+            throw new IllegalArgumentException(INPUT_MONEY_MAX_TRY_MESSAGE);
+        }
+        return lottoCount;
+    }
+
+    public static Lottos inputManualLottos(LottoCount manualLottoCount) {
+        System.out.println();
+        System.out.println(INPUT_MANUAL_LOTTO_NUMBER);
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < manualLottoCount.getLottoCount(); i++) {
+            lottos.add(inputLotto());
+        }
+        return new Lottos(lottos);
+    }
+
+    private static Lotto inputLotto() {
+        int i = 0;
+        LottoNumbers lottoNumbers = null;
+
+        while (Objects.isNull(lottoNumbers) && i < MAX_TRY_COUNT) {
+            lottoNumbers = createLottoNumbers();
+            i++;
+        }
+        if (Objects.isNull(lottoNumbers)) {
+            throw new IllegalArgumentException(INPUT_WINNING_NUMBERS_MAX_TRY_MESSAGE);
+        }
+        return new Lotto(lottoNumbers);
+    }
+
     private static Money createMoney() {
         try {
             return Money.create(inputMoneyRawString());
@@ -69,9 +111,18 @@ public class InputUtils {
         }
     }
 
-    private static LottoNumbers createLottoNumbers() {
+    private static LottoNumbers createWinningLottoNumbers() {
         try {
             return LottoNumbers.create(inputWinningNumbersRawString());
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
+
+    private static LottoNumbers createLottoNumbers() {
+        try {
+            return LottoNumbers.create(inputRawString());
         } catch (Exception e) {
             System.err.println(e.getMessage());
             return null;
@@ -83,6 +134,15 @@ public class InputUtils {
             LottoNumber bonusLottoNumber = LottoNumber.createBonusLottoNumber(inputBonusNumberRawString());
             checkBonusLottoNumber(winningLotto, bonusLottoNumber);
             return bonusLottoNumber;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
+
+    private static LottoCount createLottoCount(LottoCount totalLottoCount) {
+        try {
+            return LottoCount.createManualLottoCount(inputManualLottoCountRawString(), totalLottoCount);
         } catch (Exception e) {
             System.err.println(e.getMessage());
             return null;
@@ -102,6 +162,16 @@ public class InputUtils {
 
     private static String inputBonusNumberRawString() {
         System.out.println(INPUT_BONUS_NUMBER);
+        return scanner.nextLine();
+    }
+
+    private static String inputManualLottoCountRawString() {
+        System.out.println();
+        System.out.println(INPUT_MANUAL_LOTTO_COUNT);
+        return scanner.nextLine();
+    }
+
+    private static String inputRawString() {
         return scanner.nextLine();
     }
 

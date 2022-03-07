@@ -17,6 +17,16 @@ public class Lottos implements Iterable<Lotto> {
         this.lottos = new ArrayList<>(lottos.lottos);
     }
 
+    public Lottos() {
+        this.lottos = new ArrayList<>();
+    }
+
+    public void add(Lottos lottos) {
+        for(Lotto lotto : lottos) {
+            this.lottos.add(lotto);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

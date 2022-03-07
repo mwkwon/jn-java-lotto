@@ -28,8 +28,8 @@ public class Money {
         }
     }
 
-    public int numberOfLottoCanBuy(int lottoPrice) {
-        return money / lottoPrice;
+    public LottoCount numberOfLottoCanBuy(int lottoPrice) {
+        return new LottoCount(money / lottoPrice);
     }
 
     @Override

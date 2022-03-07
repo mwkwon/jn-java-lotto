@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -70,5 +71,16 @@ public class LottoNumbersTest {
     @MethodSource("정상_로또_번호_세트")
     void 로또_번호_정상_생성_세트(Set<LottoNumber> lottoNumbers) {
         assertThat(new LottoNumbers(lottoNumbers)).isEqualTo(new LottoNumbers(lottoNumbers));
+    }
+
+    @Test
+    void 로또_번호_빈_문자열_생성() {
+        assertThatIllegalArgumentException().isThrownBy(() -> LottoNumbers.create(""));
+    }
+
+    @Test
+    void 로또_번호_문자열_생성() {
+        LottoNumbers lottoNumbers = new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList()));
+        assertThat(LottoNumbers.create("1,2,3,4,5,6")).isEqualTo(lottoNumbers);
     }
 }

@@ -5,8 +5,8 @@ public class OutputUtils {
     private OutputUtils() {
     }
 
-    public static void printLottoCount(int lottoCount) {
-        System.out.printf("%d개를 구매했습니다.\n", lottoCount);
+    public static void printLottoCount(LottoCount manualLottoCount, LottoCount autoLottoCount) {
+        System.out.printf("수동으로 %s장, 자동으로 %s개를 구매했습니다.\n", manualLottoCount, autoLottoCount);
     }
 
     public static void printLottosResult(LottoResult lottoResult) {
