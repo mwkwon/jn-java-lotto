@@ -1,8 +1,10 @@
 package lotto;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Money {
+
     private static final String MIN_MONEY_EXCEPTION_MESSAGE = "구매금액은 천원 이상이여야 합니다.";
     private static final String INVALID_MONEY_EXCEPTION_MESSAGE = "구매금액은 숫자만 가능합니다.";
     private static final String INTEGER_REGEX = "[0-9]+";
@@ -26,7 +28,24 @@ public class Money {
         }
     }
 
-    public int numberOfLottoCanBuy(int lottoPrice) {
-        return money / lottoPrice;
+    public LottoCount numberOfLottoCanBuy(int lottoPrice) {
+        return new LottoCount(money / lottoPrice);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Money money1 = (Money) o;
+        return money == money1.money;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(money);
     }
 }

@@ -14,6 +14,5 @@ public class RandomNumbersTest {
         RandomNumbers randomNumbers = new RandomNumbers();
         List<LottoNumber> lottoNumbers = randomNumbers.lottoNumbers();
         assertEquals(lottoNumbers.size(), 6);
-        System.out.println(lottoNumbers);
     }
 }

@@ -15,7 +15,7 @@ public class LottoResult implements Iterable<LottoPrize> {
     public LottoResult(Lottos lottos, Lotto winningLotto, LottoNumber bonusLottoNumber) {
         this.lottos = new Lottos(lottos);
         this.winningLotto = new Lotto(winningLotto);
-        this.bonusLottoNumber = new LottoNumber(bonusLottoNumber);
+        this.bonusLottoNumber = bonusLottoNumber;
         this.result = initResult();
         calculatorResult();
     }
@@ -24,7 +24,7 @@ public class LottoResult implements Iterable<LottoPrize> {
         this.result = new LinkedHashMap<>(lottoResult.result);
         this.lottos = new Lottos(lottoResult.lottos);
         this.winningLotto = new Lotto(lottoResult.winningLotto);
-        this.bonusLottoNumber = new LottoNumber(lottoResult.bonusLottoNumber);
+        this.bonusLottoNumber = lottoResult.bonusLottoNumber;
     }
 
     private Map<LottoPrize, Integer> initResult() {

@@ -10,6 +10,7 @@ import java.util.TreeSet;
 public class LottoNumbers implements Iterable<LottoNumber>{
 
     private static final String LOTTO_NUMBERS_NULL_EXCEPTION = "로또 번호는 Null 일 수 없습니다.";
+    private static final String LOTTO_NUMBERS_EMPTY_EXCEPTION = "로또 번호는 공백일 수 없습니다.";
     private static final String LOTTO_NUMBERS_COUNT_EXCEPTION = "로또 번호는 6개의 숫자로 입력해 주세요.";
     private static final int LOTTO_NUMBERS_COUNT = 6;
     private static final String COMMA = ",";
@@ -31,9 +32,12 @@ public class LottoNumbers implements Iterable<LottoNumber>{
     }
 
     public static LottoNumbers create(String strLottoNumbers) {
+        if (strLottoNumbers.equals("")) {
+            throw new IllegalArgumentException(LOTTO_NUMBERS_EMPTY_EXCEPTION);
+        }
         List<LottoNumber> winningNumbers = new ArrayList<>();
         for (String number : strLottoNumbers.split(COMMA)) {
-            winningNumbers.add(new LottoNumber(Integer.parseInt(number.trim())));
+            winningNumbers.add(LottoNumber.of(Integer.parseInt(number.trim())));
         }
         return new LottoNumbers(winningNumbers);
     }
@@ -79,5 +83,22 @@ public class LottoNumbers implements Iterable<LottoNumber>{
     @Override
     public Iterator<LottoNumber> iterator() {
         return lottoNumbers.iterator();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LottoNumbers that = (LottoNumbers) o;
+        return Objects.equals(lottoNumbers, that.lottoNumbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lottoNumbers);
     }
 }

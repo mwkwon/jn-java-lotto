@@ -16,7 +16,7 @@ public class RandomNumbers {
 
     public RandomNumbers() {
         int[] range = IntStream.rangeClosed(MIN_NUM, MAX_NUM).toArray();
-        randomNumbers = Arrays.stream(range).boxed().map(LottoNumber::new).collect(Collectors.toList());
+        randomNumbers = Arrays.stream(range).boxed().map(LottoNumber::of).collect(Collectors.toList());
     }
 
     public RandomNumbers(RandomNumbers randomNumbers) {
