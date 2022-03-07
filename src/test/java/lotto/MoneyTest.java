@@ -4,6 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,13 +19,13 @@ public class MoneyTest {
     @ParameterizedTest
     @ValueSource(ints = {1000, 2000, 1000000})
     void 천원이상_정수_타입_돈이_들어온_경우(int money) {
-        new Money(money);
+        assertThat(new Money(money)).isEqualTo(new Money(money));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"1000", "2000", "1000000"})
     void 천원이상_문자_타입_돈이_들어온_경우(String money) {
-        Money.create(money);
+        assertThat(Money.create(money)).isEqualTo(Money.create(money));
     }
 
     @ParameterizedTest

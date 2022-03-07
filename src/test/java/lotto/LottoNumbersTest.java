@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @SuppressWarnings("NonAsciiCharacters")
@@ -62,12 +63,12 @@ public class LottoNumbersTest {
     @ParameterizedTest
     @MethodSource("정상_로또_번호_리스트")
     void 로또_번호_정상_생성_리스트(List<LottoNumber> lottoNumbers) {
-        new LottoNumbers(lottoNumbers);
+        assertThat(new LottoNumbers(lottoNumbers)).isEqualTo(new LottoNumbers(lottoNumbers));
     }
 
     @ParameterizedTest
     @MethodSource("정상_로또_번호_세트")
     void 로또_번호_정상_생성_세트(Set<LottoNumber> lottoNumbers) {
-        new LottoNumbers(lottoNumbers);
+        assertThat(new LottoNumbers(lottoNumbers)).isEqualTo(new LottoNumbers(lottoNumbers));
     }
 }
