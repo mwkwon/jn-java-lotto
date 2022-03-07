@@ -11,13 +11,13 @@ public class LottoNumberTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 10, 44, 45})
     void 로또_번호_생성(int lottoNumber) {
-        new LottoNumber(lottoNumber);
+        LottoNumber.of(lottoNumber);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 46})
     void 로또_번호_범위_유효성_검사(int lottoNumber) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new LottoNumber(lottoNumber));
+        assertThatIllegalArgumentException().isThrownBy(() -> LottoNumber.of(lottoNumber));
     }
 
     @ParameterizedTest

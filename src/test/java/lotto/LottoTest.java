@@ -15,23 +15,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class LottoTest {
     @Test
     void 로또_생성_테스트() {
-        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList())));
+        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList())));
     }
 
     static Stream<Arguments> 로또_당첨_번호() {
         return Stream.of(
                 Arguments.of(
-                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
-                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
+                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList()))),
+                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList()))),
                         6),
                 Arguments.of(
-                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
-                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{11, 12, 13, 14, 15, 16}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
+                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList()))),
+                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{11, 12, 13, 14, 15, 16}).boxed().map(LottoNumber::of).collect(Collectors.toList()))),
                         0
                 ),
                 Arguments.of(
-                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
-                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 13, 14, 15, 16}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
+                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList()))),
+                        new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 13, 14, 15, 16}).boxed().map(LottoNumber::of).collect(Collectors.toList()))),
                         2
                 )
         );
@@ -46,12 +46,12 @@ public class LottoTest {
     static Stream<Arguments> 로또_보너스_번호() {
         return Stream.of(
             Arguments.of(
-                new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
-                new LottoNumber(1),
+                new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList()))),
+                LottoNumber.of(1),
                 true),
             Arguments.of(
-                new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList()))),
-                new LottoNumber(10),
+                new Lotto(new LottoNumbers(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList()))),
+                LottoNumber.of(10),
                 false
             )
         );

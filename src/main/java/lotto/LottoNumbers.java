@@ -33,7 +33,7 @@ public class LottoNumbers implements Iterable<LottoNumber>{
     public static LottoNumbers create(String strLottoNumbers) {
         List<LottoNumber> winningNumbers = new ArrayList<>();
         for (String number : strLottoNumbers.split(COMMA)) {
-            winningNumbers.add(new LottoNumber(Integer.parseInt(number.trim())));
+            winningNumbers.add(LottoNumber.of(Integer.parseInt(number.trim())));
         }
         return new LottoNumbers(winningNumbers);
     }

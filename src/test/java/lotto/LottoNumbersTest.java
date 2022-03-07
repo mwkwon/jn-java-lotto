@@ -19,15 +19,15 @@ public class LottoNumbersTest {
 
     static Stream<Arguments> 에러_로또_번호_리스트() {
         return Stream.of(
-                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5}).boxed().map(LottoNumber::new).collect(Collectors.toList())),
-                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6, 7}).boxed().map(LottoNumber::new).collect(Collectors.toList()))
+                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5}).boxed().map(LottoNumber::of).collect(Collectors.toList())),
+                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6, 7}).boxed().map(LottoNumber::of).collect(Collectors.toList()))
         );
     }
 
     static Stream<Arguments> 에러_로또_번호_세트() {
         return Stream.of(
-                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5}).boxed().map(LottoNumber::new).collect(Collectors.toSet())),
-                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6, 7}).boxed().map(LottoNumber::new).collect(Collectors.toSet()))
+                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5}).boxed().map(LottoNumber::of).collect(Collectors.toSet())),
+                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6, 7}).boxed().map(LottoNumber::of).collect(Collectors.toSet()))
         );
     }
 
@@ -47,15 +47,15 @@ public class LottoNumbersTest {
 
     static Stream<Arguments> 정상_로또_번호_리스트() {
         return Stream.of(
-                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toList())),
-                Arguments.of(Arrays.stream(new int[]{11, 22, 33, 40, 41, 45}).boxed().map(LottoNumber::new).collect(Collectors.toList()))
+                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toList())),
+                Arguments.of(Arrays.stream(new int[]{11, 22, 33, 40, 41, 45}).boxed().map(LottoNumber::of).collect(Collectors.toList()))
         );
     }
 
     static Stream<Arguments> 정상_로또_번호_세트() {
         return Stream.of(
-                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::new).collect(Collectors.toSet())),
-                Arguments.of(Arrays.stream(new int[]{11, 22, 33, 40, 41, 45}).boxed().map(LottoNumber::new).collect(Collectors.toSet()))
+                Arguments.of(Arrays.stream(new int[]{1, 2, 3, 4, 5, 6}).boxed().map(LottoNumber::of).collect(Collectors.toSet())),
+                Arguments.of(Arrays.stream(new int[]{11, 22, 33, 40, 41, 45}).boxed().map(LottoNumber::of).collect(Collectors.toSet()))
         );
     }
 
